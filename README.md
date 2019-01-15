@@ -13,12 +13,13 @@ already exist.
 ## Chapters
 
 #### Rough Drafts
-
-#### Work In Progress
  * [A Complete Introduction](./a-complete-introduction.md)
 
+#### Work In Progress
+ * [Navigating the Normal Mode](./navigating-normal-mode.md)
+
 #### Planned Additions
- * Advanced Movement Commands
+ * Vim commands
  * Registers
  * Recordings
  * Using the Terminal in Vim
