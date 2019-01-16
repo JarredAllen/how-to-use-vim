@@ -8,8 +8,6 @@ This document also assumes that the reader is at least vaguely familiar with
 regular expressions. If you are not, then there is a sufficient overview of them
 [here](https://www.regular-expressions.info/quickstart.html) which you may read.
 
-**Work in Progresss** This document is far from complete.
-
 ## Overview of Normal Mode
 
 One difference about normal mode in vim is that the cursor is over a character,
@@ -66,8 +64,8 @@ specified by {text}. `?{text}` does likewise, but searches backwards from the
 cursor instead of forward. After searching for text, you can use `n` to find the
 next result (in the original direction of the search) or `N` to find the
 previous (searching the opposite direction as the used command) result. Typing
-`#` will immediately search for the previous occurence of whichever word is
-under the cursor.
+`#` (the # character, not a number) will immediately search for the previous
+occurence of whichever word is under the cursor.
 
 There are also movement commands for going to a specific letter. `fc` will move
 the cursor to the next occurence of `c` on the given line, while `tc` will move
@@ -75,10 +73,11 @@ the cursor to one character before. `F` and `T` act like `f` and `t`, except
 that the upper-case letters tell vim to search for the previous occurence of
 the letter instead of the next one.
 
-There are shortcuts for moving to specific lines. `#G` will move the cursor to
-the beginning of the specified line number. `gg` will move the cursor to the
-beginning of the entire document. `G` (without a number preceeding it) will
-move the cursor to the beginning of the last line of the document.
+There are shortcuts for moving to specific lines. `#G` (where # is a number)
+will move the cursor to the beginning of the specified line number. `gg` will
+move the cursor to the beginning of the entire document. `G` (without a number
+preceeding it) will move the cursor to the beginning of the last line of the
+document.
 
 You can specify a number before a movement command to repeat that action
 multiple times. For example, `5j` will move the cursor down five lines, and
@@ -121,6 +120,9 @@ current one. If `d` is instead followed by a movement command, then it deletes
 from the cursor location to the cursor's final location. For example, `d$` will
 delete the rest of the line, and `d^` will delete everything before the cursor.
 
+You can also type `x` to cut the character currently underneath the cursor,
+or `#x` to cut a specific number of characters.
+
 ##### Copy/Paste
 
 Vim also supports copying and pasting text.
@@ -134,8 +136,36 @@ being pasted contains no line breaks, it will be placed immediately following
 the cursor. If there are line breaks in the text, then it will be placed below
 the cursor, in new lines immediately following the current.
 
-Any text which is deleted through the use of the `c` or `d` commands will
+Any text which is deleted through the use of the `c`, `d`, or `x` commands will
 automatically be copied. To avoid this, type `"_` (a double-quote then an
 underscore) before the `c` or `d`. For why this works, read the article on
 registers when I write it.
+
+##### Indenting Text
+
+You can use `>` to indent lines of text. If you type `>`, followed by a movement
+command, then any line between the cursor's initial and final position will be
+indented one more time. Like with other commands, `>>` can be used to indent
+the current line more, and `>#>` can be used to indent a specific number of
+lines of text, starting at the cursor. You can also use `<` similarly, to remove
+indentation instead of adding it.
+
+You can also use `=` to have vim guess at the correct indentation. It functions
+similarly to `<` and `>`, except it tries to figure out the "correct"
+indentation (if you're writing code, it will base that on the language's
+preferred style rules) and makes all lines have that. `gg=G` will have vim try
+to correct the indentation on every line in the file.
+
+## Where to from here
+
+While this document does not describe everything which may be done from the
+command-line mode, it does describe a large number of things. If you've read
+and practiced everything described here, then you may consider yourself
+proficient at what can be done from normal mode.
+
+There are several features described here where I only brush the surface, such
+as copying and pasting text. In the future, I will have documents up describing
+those systems in much greater detail.
+
+I will also have a chapter describing the command-line mode in more detail.
 

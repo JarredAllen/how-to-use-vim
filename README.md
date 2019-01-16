@@ -14,9 +14,9 @@ already exist.
 
 #### Rough Drafts
  * [A Complete Introduction](./a-complete-introduction.md)
+ * [Navigating the Normal Mode](./navigating-normal-mode.md)
 
 #### Work In Progress
- * [Navigating the Normal Mode](./navigating-normal-mode.md)
 
 #### Planned Additions
  * Vim commands
