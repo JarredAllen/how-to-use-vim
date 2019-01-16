@@ -94,8 +94,48 @@ Pressing `i` is only one of several ways through which you can enter insert
 mode and begin typing text. Vim provides many other methods, each of which
 move you into insert mode slightly differently.
 
+Pressing `a` is like `i` except, instead of inserting before the character which
+the cursor is over, it appends to after the location.
+
+Using `I` and `A` (upper-case) can be used to move to enter insert mode at either
+the beginning or end of the current line, respectively. They are analogous to
+`^i` and `$a`.
+
+Using `c` allows you to simultaneously remove some text and switch to insert
+mode. To do this, type c and then a movement command. Whatever is between the
+cursor location before executing the command and after executing the command
+gets erased. For example, `c$` replaces the rest of the line, `cG` replaces the
+rest of the document, `c5w` replaces the next 5 words, etc. `cc` can also be
+used, to erase the entire line and go into insert mode (analogous to `^c$`).
+
 ### Editing the document from Insert Mode
 
 From insert mode, you can type in text onto the document. However, normal mode
 also provides powerful tools for editing documents which you can use.
+
+##### Cutting text
+
+Typing `d` can be used to cut text from the document. If you type `dd`, then it
+deletes the entire line, and `d#d` deletes that many lines starting from the
+current one. If `d` is instead followed by a movement command, then it deletes
+from the cursor location to the cursor's final location. For example, `d$` will
+delete the rest of the line, and `d^` will delete everything before the cursor.
+
+##### Copy/Paste
+
+Vim also supports copying and pasting text.
+
+To copy text, type `y` and then a movement command. The text over which the
+cursor moves will then be copied. Alternatively, you can type `yy` to copy the
+entire current line.
+
+To paste text, type p. This will paste the text after the cursor. If the text
+being pasted contains no line breaks, it will be placed immediately following
+the cursor. If there are line breaks in the text, then it will be placed below
+the cursor, in new lines immediately following the current.
+
+Any text which is deleted through the use of the `c` or `d` commands will
+automatically be copied. To avoid this, type `"_` (a double-quote then an
+underscore) before the `c` or `d`. For why this works, read the article on
+registers when I write it.
 
